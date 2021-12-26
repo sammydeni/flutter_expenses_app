@@ -1,4 +1,3 @@
-import 'dart:collection';
 
 import 'package:flutter/material.dart';
 
@@ -25,19 +24,19 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Flutter Expenses App'),
+          title: const Text('Flutter Expenses App'),
         ),
         body: Column(
           children: [
             Container(
               width: double.infinity,
               child: Card(
-                color: Colors.blue,
+                color: Colors.green,
                 child: Text('Chart'),
                 elevation: 5,
               ),
             ),
-            Card(child: Text('List of transactions'))
+            Card(child: Text('List of transactions'),)
           ],
         ));
   }
