@@ -38,13 +38,16 @@ class MyHomePage extends StatelessWidget {
     ),
   ];
 
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
+
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Flutter Expenses App'),
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
@@ -55,25 +58,50 @@ class MyHomePage extends StatelessWidget {
                 elevation: 5,
               ),
             ),
+            Card(
+              elevation: 5,
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    TextField(
+                      decoration: const InputDecoration(labelText: 'Title'),
+                      controller: titleController,
+                    ),
+                    TextField(
+                      decoration: const InputDecoration(labelText: 'Amount'),
+                      controller: amountController,
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text('Add Transaction'),
+                      style: TextButton.styleFrom(primary: Colors.green),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Column(
               children: transactions.map((tx) {
                 return Card(
                   child: Row(children: [
                     Container(
-                      margin: EdgeInsets.symmetric(
+                      margin: const EdgeInsets.symmetric(
                         vertical: 10,
                         horizontal: 15,
                       ),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.purple, width: 2),
+                        border:
+                            Border.all(color: Colors.green.shade400, width: 2),
                       ),
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
                         '\$${tx.amount}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
-                          color: Colors.purple,
+                          color: Colors.green,
                         ),
                       ),
                     ),
@@ -82,14 +110,14 @@ class MyHomePage extends StatelessWidget {
                       children: [
                         Text(
                           tx.title,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           DateFormat.yMMMEd().format(tx.date),
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.grey,
                           ),
                         ),
