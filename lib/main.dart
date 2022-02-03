@@ -16,13 +16,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
-        primarySwatch: Colors.green, // generate different shades of the color
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green)
-            .copyWith(secondary: Colors.orange),
-        textTheme: const TextTheme(
-            bodyText2: TextStyle(color: Colors.orange),
-            headline2: TextStyle(color: Colors.black, fontSize: 20)),
-      ),
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green)
+              .copyWith(secondary: Colors.orange),
+          textTheme: const TextTheme(
+              bodyText2: TextStyle(color: Colors.orange),
+              headline2: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold)),
+          fontFamily: 'Quicksand',
+          appBarTheme: AppBarTheme(
+              titleTextStyle: ThemeData.light()
+                  .textTheme
+                  .copyWith(
+                    headline6: TextStyle(fontFamily: 'OpenSans', fontSize: 16),
+                  )
+                  .headline6)),
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
@@ -36,18 +45,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-      id: 't1',
-      title: 'Pixel 6',
-      amount: 599.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Oryx Pro',
-      amount: 1399,
-      date: DateTime.now(),
-    ),
+    // Transaction(
+    //   id: 't1',
+    //   title: 'Pixel 6',
+    //   amount: 599.99,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't2',
+    //   title: 'Oryx Pro',
+    //   amount: 1399,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   void _addNewTransaction(String txTitle, double txAmount) {
@@ -109,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        // backgroundColor: Theme.of(context).colorScheme.primary,
         child: const Icon(Icons.add),
         onPressed: () => _startAddNewTransaction(context),
       ),
