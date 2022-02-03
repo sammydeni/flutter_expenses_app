@@ -27,7 +27,7 @@ class _NewTransactionState extends State<NewTransaction> {
       enteredAmount,
     );
 
-    Navigator.of(context).pop();
+    Navigator.of(context).pop(); // to close the top screen ( modal )
   }
 
   @override

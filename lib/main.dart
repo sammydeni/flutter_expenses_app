@@ -14,9 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Personal Expenses',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green, // generate different shades of the color
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green)
+            .copyWith(secondary: Colors.orange),
+        textTheme: const TextTheme(
+            bodyText2: TextStyle(color: Colors.orange),
+            headline2: TextStyle(color: Colors.black, fontSize: 20)),
       ),
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
@@ -70,6 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -89,8 +95,11 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               width: double.infinity,
               child: Card(
-                color: Colors.green,
-                child: Text('Chart'),
+                color: Theme.of(context).colorScheme.primary,
+                child: Text(
+                  'Chart',
+                  style: Theme.of(context).textTheme.headline2,
+                ),
                 elevation: 5,
               ),
             ),
@@ -100,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).colorScheme.primary,
         child: const Icon(Icons.add),
         onPressed: () => _startAddNewTransaction(context),
       ),
