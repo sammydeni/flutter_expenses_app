@@ -22,7 +22,7 @@ class TransactionList extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    Container(
+                    SizedBox(
                       height: constraints.maxHeight * 0.6,
                       child: Image.asset(
                         'assets/images/waiting.png',
@@ -55,14 +55,14 @@ class TransactionList extends StatelessWidget {
                       Text(DateFormat.yMMMd().format(transactions[index].date)),
                   trailing: MediaQuery.of(context).size.width > 360
                       ? TextButton.icon(
-                          label: Text('Delete'),
-                          icon: Icon(Icons.delete),
+                          label: const Text('Delete'),
+                          icon: const Icon(Icons.delete),
                           onPressed: () => deleteTx(transactions[index].id),
                           style: TextButton.styleFrom(
                               primary: Theme.of(context).colorScheme.error),
                         )
                       : IconButton(
-                          icon: Icon(Icons.delete),
+                          icon: const Icon(Icons.delete),
                           color: Theme.of(context).colorScheme.error,
                           onPressed: () => deleteTx(transactions[index].id),
                         ),
